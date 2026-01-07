@@ -24,8 +24,8 @@ endif
 # SRC_DIRS specifies directories containing
 # production code C and CPP files.
 #
-SRC_FILES += example-src/Example.c
-SRC_DIRS += example-platform
+SRC_FILES += src/Example.c
+SRC_DIRS += platform
 
 # --- TEST_SRC_FILES and TEST_SRC_DIRS ---
 # Test files are always included in the build.
@@ -41,7 +41,7 @@ TEST_SRC_DIRS += tests
 TEST_SRC_DIRS += tests/io-cppumock
 TEST_SRC_DIRS += tests/printf-spy
 
-#	tests/example-fff \
+#	tests/fff \
 #	tests/fff \
 
 # --- MOCKS_SRC_DIRS ---
@@ -57,8 +57,8 @@ CPPUTEST_USE_EXTENSIONS = Y
 # containing directory
 INCLUDE_DIRS += $(CPPUTEST_HOME)/include
 INCLUDE_DIRS += $(CPPUTEST_HOME)/include/Platforms/Gcc
-INCLUDE_DIRS += example-include
-INCLUDE_DIRS += example-fff
+INCLUDE_DIRS += include
+INCLUDE_DIRS += fff
 INCLUDE_DIRS += tests/exploding-fakes
 INCLUDE_DIRS += tests/fff
 
