@@ -43,3 +43,13 @@ Debug
 *.user
 *.sublime-*
 
+# Visual Studio
+.vscode/
+*.sln
+*.user
+
+# JetBrains IDEs (CLion, IntelliJ, etc.)
+.idea/
+*.iws
+*.iml
+*.ipr
