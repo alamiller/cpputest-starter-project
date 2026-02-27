@@ -7,8 +7,8 @@ COMPONENT_NAME = your
 #--- Inputs ----#
 PROJECT_HOME_DIR = .
 ifeq "$(CPPUTEST_HOME)" ""
-$(error The environment variable CPPUTEST_HOME is not set. \
-Set it to where cpputest is installed)
+	$(error The environment variable CPPUTEST_HOME is not set. \
+	Set it to where cpputest is installed)
 endif
 
 # --- SRC_FILES and SRC_DIRS ---
@@ -25,6 +25,7 @@ endif
 # production code C and CPP files.
 #
 SRC_FILES += src/Example.c
+SRC_FILES += src/LedDriver.c
 SRC_DIRS += platform
 
 # --- TEST_SRC_FILES and TEST_SRC_DIRS ---
@@ -100,12 +101,12 @@ CPPUTEST_LIB_DIR = test-lib
 
 # Some flags to quiet clang
 ifeq ($(shell $(CC) -v 2>&1 | grep -c "clang"), 1)
-CPPUTEST_WARNING_FLAGS += -Wno-unknown-warning-option
-CPPUTEST_WARNING_FLAGS += -Wno-covered-switch-default
-CPPUTEST_WARNING_FLAGS += -Wno-reserved-id-macro
-CPPUTEST_WARNING_FLAGS += -Wno-keyword-macro
-CPPUTEST_WARNING_FLAGS += -Wno-documentation
-CPPUTEST_WARNING_FLAGS += -Wno-missing-noreturn
+	CPPUTEST_WARNING_FLAGS += -Wno-unknown-warning-option
+	CPPUTEST_WARNING_FLAGS += -Wno-covered-switch-default
+	CPPUTEST_WARNING_FLAGS += -Wno-reserved-id-macro
+	CPPUTEST_WARNING_FLAGS += -Wno-keyword-macro
+	CPPUTEST_WARNING_FLAGS += -Wno-documentation
+	CPPUTEST_WARNING_FLAGS += -Wno-missing-noreturn
 endif
 
 CPPUTEST_WARNING_FLAGS += -Wall
