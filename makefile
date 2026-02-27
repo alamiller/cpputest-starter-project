@@ -30,7 +30,7 @@ SRC_DIRS += platform
 # --- TEST_SRC_FILES and TEST_SRC_DIRS ---
 # Test files are always included in the build.
 # Production code is pulled into the build unless
-# it is overriden by code of the same name in the
+# it is overridden by code of the same name in the
 # test code.
 #
 # TEST_SRC_FILES specifies individual test files to build.
@@ -83,9 +83,9 @@ CPPUTEST_OBJS_DIR = test-obj
 CPPUTEST_LIB_DIR = test-lib
 
 # You may have to tweak these compiler flags
-#    CPPUTEST_WARNINGFLAGS - apply to C and C++
-#    CPPUTEST_CFLAGS - apply to C files only
-#    CPPUTEST_CXXFLAGS - apply to C++ files only
+#    CPPUTEST_WARNING_FLAGS - apply to C and C++
+#    CPPUTEST_C_FLAGS - apply to C files only
+#    CPPUTEST_CXX_FLAGS - apply to C++ files only
 #    CPPUTEST_CPPFLAGS - apply to C and C++ Pre-Processor
 #
 # If you get an error like this
@@ -93,40 +93,42 @@ CPPUTEST_LIB_DIR = test-lib
 #        with C++98 [-Werror,-Wc++98-compat] ...
 # The compiler is basically telling you how to fix the
 # build problem.  You would add this flag setting
-#     CPPUTEST_CXXFLAGS += -Wno-c++14-compat
+#     CPPUTEST_CXX_FLAGS += -Wno-c++14-compat
 
 
 
 
 # Some flags to quiet clang
 ifeq ($(shell $(CC) -v 2>&1 | grep -c "clang"), 1)
-CPPUTEST_WARNINGFLAGS += -Wno-unknown-warning-option
-CPPUTEST_WARNINGFLAGS += -Wno-covered-switch-default
-CPPUTEST_WARNINGFLAGS += -Wno-reserved-id-macro
-CPPUTEST_WARNINGFLAGS += -Wno-keyword-macro
-CPPUTEST_WARNINGFLAGS += -Wno-documentation
-CPPUTEST_WARNINGFLAGS += -Wno-missing-noreturn
+CPPUTEST_WARNING_FLAGS += -Wno-unknown-warning-option
+CPPUTEST_WARNING_FLAGS += -Wno-covered-switch-default
+CPPUTEST_WARNING_FLAGS += -Wno-reserved-id-macro
+CPPUTEST_WARNING_FLAGS += -Wno-keyword-macro
+CPPUTEST_WARNING_FLAGS += -Wno-documentation
+CPPUTEST_WARNING_FLAGS += -Wno-missing-noreturn
 endif
 
-CPPUTEST_WARNINGFLAGS += -Wall
-CPPUTEST_WARNINGFLAGS += -Werror
-CPPUTEST_WARNINGFLAGS += -Wfatal-errors
-CPPUTEST_WARNINGFLAGS += -Wswitch-default
-CPPUTEST_WARNINGFLAGS += -Wno-format-nonliteral
-CPPUTEST_WARNINGFLAGS += -Wno-sign-conversion
-CPPUTEST_WARNINGFLAGS += -Wno-pedantic
-CPPUTEST_WARNINGFLAGS += -Wno-shadow
-CPPUTEST_WARNINGFLAGS += -Wno-missing-field-initializers
-CPPUTEST_WARNINGFLAGS += -Wno-unused-parameter
-CPPUTEST_CFLAGS += -pedantic
-CPPUTEST_CFLAGS += -Wno-missing-prototypes
-CPPUTEST_CFLAGS += -Wno-strict-prototypes
-CPPUTEST_CXXFLAGS += -Wno-c++14-compat
-CPPUTEST_CXXFLAGS += --std=c++11
-CPPUTEST_CXXFLAGS += -Wno-c++98-compat-pedantic
-CPPUTEST_CXXFLAGS += -Wno-c++98-compat
+CPPUTEST_WARNING_FLAGS += -Wall
+CPPUTEST_WARNING_FLAGS += -Werror
+CPPUTEST_WARNING_FLAGS += -Wfatal-errors
+CPPUTEST_WARNING_FLAGS += -Wswitch-default
+CPPUTEST_WARNING_FLAGS += -Wno-format-nonliteral
+CPPUTEST_WARNING_FLAGS += -Wno-sign-conversion
+CPPUTEST_WARNING_FLAGS += -Wno-pedantic
+CPPUTEST_WARNING_FLAGS += -Wno-shadow
+CPPUTEST_WARNING_FLAGS += -Wno-missing-field-initializers
+CPPUTEST_WARNING_FLAGS += -Wno-unused-parameter
 
-# Coloroze output
+CPPUTEST_C_FLAGS += -pedantic
+CPPUTEST_C_FLAGS += -Wno-missing-prototypes
+CPPUTEST_C_FLAGS += -Wno-strict-prototypes
+
+CPPUTEST_CXX_FLAGS += -Wno-c++14-compat
+CPPUTEST_CXX_FLAGS += --std=c++11
+CPPUTEST_CXX_FLAGS += -Wno-c++98-compat-pedantic
+CPPUTEST_CXX_FLAGS += -Wno-c++98-compat
+
+# Colorise output
 CPPUTEST_EXE_FLAGS += -c
 
 # --- LD_LIBRARIES -- Additional needed libraries can be added here.
